@@ -26,12 +26,12 @@
         "symfony/translation": "^6.0|^7.0"
     },
     "require-dev": {
-        "doctrine/orm": "^2.9",
-        "doctrine/doctrine-bundle": "^2.5",
-        "phpunit/phpunit": "8.5.*",
+        "doctrine/orm": "2.*",
+        "doctrine/doctrine-bundle": "2.*",
+        "phpunit/phpunit": "8.*",
         "symfony/phpunit-bridge": "^6.0|^7.0",
-        "rector/rector": "^2.0",
-        "friendsofphp/php-cs-fixer": "^3.9"
+        "rector/rector": "2.*",
+        "friendsofphp/php-cs-fixer": "3.*"
     },
     "suggest": {
         "ext-memcache": "*",
