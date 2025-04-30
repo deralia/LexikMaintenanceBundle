@@ -2,8 +2,6 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Drivers\Query;
 
-use Doctrine\ORM\EntityManager;
-
 /**
  * Class for handle database with a dsn connection
  *
@@ -18,7 +16,6 @@ class DsnQuery extends PdoQuery
     public function initDb()
     {
         if (null === $this->db) {
-
             if (!class_exists('PDO') || !in_array('mysql', \PDO::getAvailableDrivers(), true)) {
                 throw new \RuntimeException('You need to enable PDO_Mysql extension for the profiler to run properly.');
             }
@@ -64,8 +61,10 @@ class DsnQuery extends PdoQuery
     {
         return $this->exec(
             $db,
-            sprintf('INSERT INTO %s (ttl) VALUES (:ttl)',
-            $this->options['table']),
+            sprintf(
+                'INSERT INTO %s (ttl) VALUES (:ttl)',
+                $this->options['table']
+            ),
             array(':ttl' => $ttl)
         );
     }

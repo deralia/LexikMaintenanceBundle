@@ -4,7 +4,6 @@ namespace Lexik\Bundle\MaintenanceBundle\Listener;
 
 use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
 use Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException;
-
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
@@ -20,10 +19,8 @@ class MaintenanceListener
 {
     /**
      * Service driver factory
-     *
-     * @var \Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory
      */
-    protected $driverFactory;
+    protected DriverFactory $driverFactory;
 
     /**
      * Authorized data
@@ -151,7 +148,7 @@ class MaintenanceListener
      */
     public function onKernelRequest(RequestEvent $event)
     {
-        if(!$event->isMainRequest()){
+        if (!$event->isMainRequest()) {
             return;
         }
 

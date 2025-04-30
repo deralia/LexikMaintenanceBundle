@@ -15,14 +15,14 @@ class ShmDriver extends AbstractDriver
      *
      * @var string
      */
-    const VALUE_TO_STORE = "maintenance";
+    public const VALUE_TO_STORE = "maintenance";
 
     /**
      * Variable key
      *
      * @var integer
      */
-    const VARIABLE_KEY = 1;
+    public const VARIABLE_KEY = 1;
 
     /**
      * The key store in shm
@@ -97,7 +97,7 @@ class ShmDriver extends AbstractDriver
     public function isExists()
     {
         if ($this->shmId) {
-            if (!shm_has_var($this->shmId, self::VARIABLE_KEY) ) {
+            if (!shm_has_var($this->shmId, self::VARIABLE_KEY)) {
                 return false;
             }
             $data = shm_get_var($this->shmId, self::VARIABLE_KEY);

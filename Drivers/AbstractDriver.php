@@ -12,10 +12,7 @@ use Symfony\Component\Translation\Translator;
  */
 abstract class AbstractDriver
 {
-    /**
-     * @var array
-     */
-    protected $options;
+    protected array $options;
 
     /**
      * @var Translator

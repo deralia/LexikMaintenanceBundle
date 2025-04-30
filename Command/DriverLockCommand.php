@@ -4,11 +4,11 @@ namespace Lexik\Bundle\MaintenanceBundle\Command;
 
 use Lexik\Bundle\MaintenanceBundle\Drivers\AbstractDriver;
 use Lexik\Bundle\MaintenanceBundle\Drivers\DriverTtlInterface;
-
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Create a lock action
@@ -20,15 +20,10 @@ class DriverLockCommand extends Command
 {
     protected $ttl;
 
-    protected $container;
+    protected ContainerInterface $container;
 
-    /**
-     * return object of Queue
-     *
-     * @return object
-     * @package LexikMaintenanceBundleBundle
-     */
-    public function setContainer($container){
+    public function setContainer(ContainerInterface $container): void
+    {
         $this->container = $container;
     }
 
@@ -41,7 +36,8 @@ class DriverLockCommand extends Command
             ->setName('lexik:maintenance:lock')
             ->setDescription('Lock access to the site while maintenance...')
             ->addArgument('ttl', InputArgument::OPTIONAL, 'Overwrite time to life from your configuration, doesn\'t work with file or shm driver. Time in seconds.', null)
-            ->setHelp(<<<EOT
+            ->setHelp(
+                <<<EOT
 
     You can optionally set a time to life of the maintenance
 
@@ -119,7 +115,7 @@ EOT
                     $input,
                     $output,
                     sprintf('<info>%s</info> [<comment>Default value in your configuration: %s</comment>]%s ', 'Set time', $driver->hasTtl() ? $driver->getTtl() : 'unlimited', ':'),
-                    function($value) use ($default) {
+                    function ($value) use ($default) {
                         if (!is_numeric($value) && null === $default) {
                             return null;
                         } elseif (!is_numeric($value)) {
@@ -162,7 +158,8 @@ EOT
      * @param OutputInterface $output
      * @return mixed
      */
-    protected function askConfirmation($question, InputInterface $input, OutputInterface $output) {
+    protected function askConfirmation($question, InputInterface $input, OutputInterface $output)
+    {
         if (!$this->getHelperSet()->has('question')) {
             return $this->getHelper('dialog')
                 ->askConfirmation($output, '<question>' . $question . '</question>', 'y');
@@ -184,7 +181,8 @@ EOT
      * @param null $default
      * @return mixed
      */
-    protected function askAndValidate(InputInterface $input, OutputInterface $output, $question, $validator, $attempts = 1, $default = null) {
+    protected function askAndValidate(InputInterface $input, OutputInterface $output, $question, $validator, $attempts = 1, $default = null)
+    {
         if (!$this->getHelperSet()->has('question')) {
             return $this->getHelper('dialog')
                 ->askAndValidate($output, $question, $validator, $attempts, $default);

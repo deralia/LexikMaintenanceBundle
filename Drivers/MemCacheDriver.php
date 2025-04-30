@@ -15,7 +15,7 @@ class MemCacheDriver extends AbstractDriver implements DriverTtlInterface
      *
      * @var string
      */
-    const VALUE_TO_STORE = "maintenance";
+    public const VALUE_TO_STORE = "maintenance";
 
     /**
      * The key store in memcache
@@ -40,15 +40,15 @@ class MemCacheDriver extends AbstractDriver implements DriverTtlInterface
     {
         parent::__construct($options);
 
-        if ( ! isset($options['key_name'])) {
+        if (! isset($options['key_name'])) {
             throw new \InvalidArgumentException('$options[\'key_name\'] must be defined if Driver Memcache configuration is used');
         }
 
-        if ( ! isset($options['host'])) {
+        if (! isset($options['host'])) {
             throw new \InvalidArgumentException('$options[\'host\'] must be defined if Driver Memcache configuration is used');
         }
 
-        if ( ! isset($options['port'])) {
+        if (! isset($options['port'])) {
             throw new \InvalidArgumentException('$options[\'port\'] must be defined if Driver Memcache configuration is used');
         } elseif (! is_int($options['port'])) {
             throw new \InvalidArgumentException('$options[\'port\'] must be an integer if Driver Memcache configuration is used');
@@ -56,7 +56,7 @@ class MemCacheDriver extends AbstractDriver implements DriverTtlInterface
 
         if (null !== $options) {
             $this->keyName = $options['key_name'];
-            $this->memcacheInstance = new \Memcache;
+            $this->memcacheInstance = new \Memcache();
             $this->memcacheInstance->connect($options['host'], $options['port']);
         }
 

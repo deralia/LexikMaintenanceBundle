@@ -61,15 +61,15 @@ class LexikMaintenanceExtension extends Extension
      */
     protected function registerDsnConfiguration($options)
     {
-        if ( ! isset($options['table'])) {
+        if (! isset($options['table'])) {
             throw new InvalidArgumentException('You need to define table for dsn use');
         }
 
-        if ( ! isset($options['user'])) {
+        if (! isset($options['user'])) {
             throw new InvalidArgumentException('You need to define user for dsn use');
         }
 
-        if ( ! isset($options['password'])) {
+        if (! isset($options['password'])) {
             throw new InvalidArgumentException('You need to define password for dsn use');
         }
     }

@@ -70,7 +70,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->integerNode('code')
-                            ->defaultValue( 503 )
+                            ->defaultValue(503)
                         ->end()
                         ->scalarNode('status')
                             ->defaultValue('Service Temporarily Unavailable')

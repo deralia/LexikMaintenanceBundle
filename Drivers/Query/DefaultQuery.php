@@ -12,18 +12,16 @@ use Doctrine\ORM\EntityManager;
  */
 class DefaultQuery extends PdoQuery
 {
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+    protected \Doctrine\ORM\EntityManager $em;
 
-    const NAME_TABLE   = 'lexik_maintenance';
+    public const NAME_TABLE   = 'lexik_maintenance';
 
     /**
      * @param EntityManager $em Entity Manager
      */
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, array $options = array())
     {
+        parent::__construct($options);
         $this->em = $em;
     }
 
@@ -75,8 +73,11 @@ class DefaultQuery extends PdoQuery
     public function insertQuery($ttl, $db)
     {
         return $this->exec(
-            $db, sprintf('INSERT INTO %s (ttl) VALUES (:ttl)',
-            self::NAME_TABLE),
+            $db,
+            sprintf(
+                'INSERT INTO %s (ttl) VALUES (:ttl)',
+                self::NAME_TABLE
+            ),
             array(':ttl' => $ttl)
         );
     }

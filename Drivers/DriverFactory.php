@@ -2,9 +2,7 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Drivers;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Translation\Translator;
-use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Factory for create driver
@@ -14,28 +12,19 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class DriverFactory
 {
-    /**
-     * @var array
-     */
-    protected $driverOptions;
+    protected array $driverOptions;
 
-    /**
-     * @var DatabaseDriver
-     */
-    protected $dbDriver;
+    protected \Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver $dbDriver;
 
-    /**
-     * @var TranslatorInterface
-     */
-    protected $translator;
+    protected \Symfony\Bundle\FrameworkBundle\Translation\Translator $translator;
 
-    const DATABASE_DRIVER = 'Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver';
+    public const DATABASE_DRIVER = 'Lexik\Bundle\MaintenanceBundle\Drivers\DatabaseDriver';
 
     /**
      * Constructor driver factory
      *
      * @param DatabaseDriver      $dbDriver The databaseDriver Service
-     * @param TranslatorInterface $translator The translator service
+     * @param Translator $translator The translator service
      * @param array               $driverOptions Options driver
      * @throws \ErrorException
      */
@@ -43,7 +32,7 @@ class DriverFactory
     {
         $this->driverOptions = $driverOptions;
 
-        if ( ! isset($this->driverOptions['class'])) {
+        if (! isset($this->driverOptions['class'])) {
             throw new \ErrorException('You need to define a driver class');
         }
 

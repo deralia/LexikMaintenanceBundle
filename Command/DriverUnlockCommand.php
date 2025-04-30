@@ -5,6 +5,7 @@ namespace Lexik\Bundle\MaintenanceBundle\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Create an unlock action
@@ -14,16 +15,10 @@ use Symfony\Component\Console\Command\Command;
  */
 class DriverUnlockCommand extends Command
 {
+    protected ContainerInterface $container;
 
-    protected $container;
-
-    /**
-     * return object of Queue
-     *
-     * @return object
-     * @package LexikMaintenanceBundleBundle
-     */
-    public function setContainer($container){
+    public function setContainer(ContainerInterface $container): void
+    {
         $this->container = $container;
     }
 
@@ -35,12 +30,13 @@ class DriverUnlockCommand extends Command
         $this
             ->setName('lexik:maintenance:unlock')
             ->setDescription('Unlock access to the site while maintenance...')
-            ->setHelp(<<<EOT
+            ->setHelp(
+                <<<EOT
     You can execute the unlock without a warning message which you need to interact with:
 
     <info>%command.full_name% --no-interaction</info>
 EOT
-                );
+            );
     }
 
     /**
@@ -102,7 +98,8 @@ EOT
      * @param OutputInterface $output
      * @return mixed
      */
-    protected function askConfirmation($question, InputInterface $input, OutputInterface $output) {
+    protected function askConfirmation($question, InputInterface $input, OutputInterface $output)
+    {
         if (!$this->getHelperSet()->has('question')) {
             return $this->getHelper('dialog')
                 ->askConfirmation($output, '<question>' . $question . '</question>', 'y');

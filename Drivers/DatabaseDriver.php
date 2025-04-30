@@ -14,15 +14,12 @@ use Lexik\Bundle\MaintenanceBundle\Drivers\Query\DsnQuery;
  */
 class DatabaseDriver extends AbstractDriver implements DriverTtlInterface
 {
-    /**
-     * @var Registry
-     */
-    protected $doctrine;
+    protected ?Registry $doctrine;
 
     /**
      * @var array
      */
-    protected $options;
+    protected array $options;
 
     /**
      * @var string
