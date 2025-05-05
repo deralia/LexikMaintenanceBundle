@@ -22,8 +22,8 @@
     "require": {
         "php": "^8.1",
         "symfony/console": "^6.0|^7.0",
-        "symfony/framework-bundle": "6.*",
-        "symfony/translation": "6.*"
+        "symfony/framework-bundle": "^6.0|^7.0",
+        "symfony/translation": "^6.0|^7.0"
     },
     "require-dev": {
         "doctrine/orm": "^2.0|^3.0",
