@@ -2,6 +2,8 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Drivers;
 
+use Lexik\Bundle\MaintenanceBundle\Drivers\Translator;
+
 /**
  * Class to handle a shared memory driver
  *

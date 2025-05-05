@@ -2,7 +2,7 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Tests\Exception;
 
-use Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException;
+use Lexik\Bundle\MaintenanceBundle\src\Exception\ServiceUnavailableException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 

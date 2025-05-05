@@ -4,7 +4,7 @@ Installation
 ## Install it via composer
 
 ```shell
-php composer.phar require lexik/maintenance-bundle
+php composer.phar require deralia/maintenance-bundle
 ```
 
 
@@ -102,8 +102,9 @@ Or (with the optional ttl overwriting)
 Custom error page 503
 ---------------------
 
-In the listener, an exception is thrown when web site is under maintenance. This exception is a 'This exception is a 'HttpException' (status 503), to custom your error page
- you need to create a error503.html.twig (if you use twig) in:
+In the listener, an exception is thrown when web site is under maintenance. This exception is a 503 'HttpException'.
+To custom your error page you need to create a error503.html.twig (if you use twig) in:
+
     app/Resources/TwigBundle/views/Exception
 
 #### Important

@@ -2,6 +2,8 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Drivers\Query;
 
+use Lexik\Bundle\MaintenanceBundle\Drivers\Query\Statement;
+
 /**
  * Abstract class to handle PDO connection
  *

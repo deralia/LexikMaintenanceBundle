@@ -3,6 +3,7 @@
 namespace Lexik\Bundle\MaintenanceBundle\Drivers;
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Lexik\Bundle\MaintenanceBundle\Drivers\PdoDriver;
 use Lexik\Bundle\MaintenanceBundle\Drivers\Query\DefaultQuery;
 use Lexik\Bundle\MaintenanceBundle\Drivers\Query\DsnQuery;
 

@@ -2,17 +2,17 @@
 
 namespace Lexik\Bundle\MaintenanceBundle\Tests\Listener;
 
-use Lexik\Bundle\MaintenanceBundle\Listener\MaintenanceListener;
-use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
-use Lexik\Bundle\MaintenanceBundle\Drivers\FileDriver;
-use Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException;
+use Lexik\Bundle\MaintenanceBundle\src\Drivers\DriverFactory;
+use Lexik\Bundle\MaintenanceBundle\src\Drivers\FileDriver;
+use Lexik\Bundle\MaintenanceBundle\src\Exception\ServiceUnavailableException;
+use Lexik\Bundle\MaintenanceBundle\src\Listener\MaintenanceListener;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use ReflectionProperty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use ReflectionProperty;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class MaintenanceListenerTest extends TestCase
 {

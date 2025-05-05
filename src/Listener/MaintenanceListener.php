@@ -4,10 +4,10 @@ namespace Lexik\Bundle\MaintenanceBundle\Listener;
 
 use Lexik\Bundle\MaintenanceBundle\Drivers\DriverFactory;
 use Lexik\Bundle\MaintenanceBundle\Exception\ServiceUnavailableException;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpFoundation\IpUtils;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
-use Symfony\Component\HttpFoundation\IpUtils;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
  * Listener to decide if user can access to the site
